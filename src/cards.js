@@ -1,45 +1,45 @@
 import React from 'react';
 import { List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput } from 'admin-on-rest/lib/mui';
 
-export const PostList = (props) => (
+export const CardList = (props) => (
     <List {...props}>
         <Datagrid>
             <TextField source="id" />
-            <ReferenceField label="User" source="userId" reference="users">
+            <ReferenceField label="Tag" source="id" reference="tags">
                 <TextField source="name" />
             </ReferenceField>
             <TextField source="title" />
-            <TextField source="body" />
+            <TextField source="summary" />
             <EditButton />
         </Datagrid>
     </List>
 );
 
-const PostTitle = ({ record }) => {
-    return <span>Post {record ? `"${record.title}"` : ''}</span>;
+const CardTitle = ({ record }) => {
+    return <span>Card {record ? `"${record.title}"` : ''}</span>;
 };
 
-export const PostEdit = (props) => (
-    <Edit title={<PostTitle />} {...props}>
+export const CardEdit = (props) => (
+    <Edit title={<CardTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <ReferenceInput label="User" source="userId" reference="users">
+            <ReferenceInput label="Tag" source="id" reference="tags">
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="title" />
-            <LongTextInput source="body" />
+            <LongTextInput source="summary" />
         </SimpleForm>
     </Edit>
 );
 
-export const PostCreate = (props) => (
+export const CardCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
+            <ReferenceInput label="Tag" source="id" reference="tags" allowEmpty>
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="title" />
-            <LongTextInput source="body" />
+            <LongTextInput source="summary" />
         </SimpleForm>
     </Create>
 );
