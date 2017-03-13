@@ -1,16 +1,37 @@
-import React from 'react';
-import { List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput } from 'admin-on-rest/lib/mui';
+import React, { PropTypes } from 'react'
+import { 
+    List, Edit, Create, Datagrid, TextField, EditButton, 
+    DisabledInput, LongTextInput, SimpleForm, 
+    TextInput, DeleteButton
+} from 'admin-on-rest/lib/mui'
+import Chip from 'material-ui/Chip'
+import get from 'lodash.get'
+
+const MultipleTagField = ({ source, record = {} }) => {
+    const tags = get(record, source)
+    return (
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {tags.map(tag => 
+                <Chip key={tag.id} style={{ margin: 4 }}>{tag.name}</Chip>
+            )}
+        </div>
+    )
+}
+MultipleTagField.propTypes = {
+    label: PropTypes.string,
+    source: PropTypes.string.isRequired,
+    record: PropTypes.object,
+};
 
 export const CardList = (props) => (
     <List {...props}>
         <Datagrid>
-            <TextField source="id" />
-            <ReferenceField label="Tag" source="id" reference="tags">
-                <TextField source="name" />
-            </ReferenceField>
+            <TextField source="slug" />
             <TextField source="title" />
             <TextField source="summary" />
+            <MultipleTagField source="tags" />
             <EditButton />
+            <DeleteButton />
         </Datagrid>
     </List>
 );
@@ -23,11 +44,10 @@ export const CardEdit = (props) => (
     <Edit title={<CardTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <ReferenceInput label="Tag" source="id" reference="tags">
-                <SelectInput optionText="name" />
-            </ReferenceInput>
             <TextInput source="title" />
-            <LongTextInput source="summary" />
+            <TextInput source="summary" />
+            <TextInput source="tagNames" />
+            <LongTextInput source="content" />
         </SimpleForm>
     </Edit>
 );
@@ -35,11 +55,11 @@ export const CardEdit = (props) => (
 export const CardCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput label="Tag" source="id" reference="tags" allowEmpty>
-                <SelectInput optionText="name" />
-            </ReferenceInput>
+            <TextInput source="slug" />
             <TextInput source="title" />
-            <LongTextInput source="summary" />
+            <TextInput source="summary" />
+            <TextInput source="tagNames" />
+            <LongTextInput source="content" />
         </SimpleForm>
     </Create>
 );

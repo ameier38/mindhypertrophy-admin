@@ -2,7 +2,7 @@ import React from 'react';
 import { simpleRestClient, fetchUtils, Admin, Resource } from 'admin-on-rest'
 import authClient from './authClient'
 import { CardList, CardEdit, CardCreate } from './cards';
-import { TagList } from './tags';
+import { TagList, TagEdit, TagCreate } from './tags';
 
 const httpClient = (url, options) => {
     if (!options.headers) {
@@ -18,7 +18,7 @@ const restClient = simpleRestClient('http://localhost:5000/api', httpClient);
 const App = () => (
     <Admin restClient={restClient} authClient={authClient}>
         <Resource name="cards" list={CardList} edit={CardEdit} create={CardCreate} />
-        <Resource name="tags" list={TagList} />
+        <Resource name="tags" list={TagList} edit={TagEdit} create={TagCreate} />
     </Admin>
 );
 
