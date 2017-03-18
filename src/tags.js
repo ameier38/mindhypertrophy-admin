@@ -1,9 +1,9 @@
 import React from 'react'
 import { 
     List, Datagrid, TextField, Edit, SimpleForm, 
-    DisabledInput, TextInput, Create, EditButton,
-    DeleteButton
+    DisabledInput, TextInput, Create, EditButton
 } from 'admin-on-rest/lib/mui'
+import DeleteButton from './DeleteButton'
 
 export const TagList = (props) => (
     <List title="All tags" {...props}>
@@ -11,7 +11,7 @@ export const TagList = (props) => (
             <TextField source="id" />
             <TextField source="name" />
             <EditButton />
-            <DeleteButton />
+            <DeleteButton resource="tags" />
         </Datagrid>
     </List>
 );

@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react'
 import { 
     List, Edit, Create, Datagrid, TextField, EditButton, 
     DisabledInput, LongTextInput, SimpleForm, 
-    TextInput, DeleteButton
+    TextInput
 } from 'admin-on-rest/lib/mui'
+import DeleteButton from './DeleteButton'
 import Chip from 'material-ui/Chip'
 import get from 'lodash.get'
 
@@ -31,7 +32,7 @@ export const CardList = (props) => (
             <TextField source="summary" />
             <MultipleTagField source="tags" />
             <EditButton />
-            <DeleteButton />
+            <DeleteButton resource="cards" />
         </Datagrid>
     </List>
 );

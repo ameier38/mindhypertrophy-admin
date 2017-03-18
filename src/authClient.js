@@ -1,9 +1,10 @@
 import { AUTH_LOGIN } from 'admin-on-rest';
+import { API_URL } from './config'
 
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
-        const request = new Request('http://localhost:5000/api/users/login', {
+        const request = new Request(`${API_URL}/users/login`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
