@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import FlatButton from 'material-ui/FlatButton'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 import { DELETE } from 'admin-on-rest'
-import restClient from './restClient'
+import restClient from '../restClient'
 import { showNotification as showNotificationAction } from 'admin-on-rest'
 import { push as pushAction } from 'react-router-redux'
 

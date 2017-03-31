@@ -4,6 +4,7 @@ import {
     DisabledInput, LongTextInput, SimpleForm, 
     TextInput
 } from 'admin-on-rest/lib/mui'
+import MarkdownInput from './MarkdownInput'
 import DeleteButton from './DeleteButton'
 import Chip from 'material-ui/Chip'
 import get from 'lodash.get'
@@ -24,7 +25,7 @@ MultipleTagField.propTypes = {
     record: PropTypes.object,
 };
 
-export const CardList = (props) => (
+export const ArticleList = (props) => (
     <List {...props}>
         <Datagrid>
             <TextField source="slug" />
@@ -32,35 +33,37 @@ export const CardList = (props) => (
             <TextField source="summary" />
             <MultipleTagField source="tags" />
             <EditButton />
-            <DeleteButton resource="cards" />
+            <DeleteButton resource="articles" />
         </Datagrid>
     </List>
 );
 
-const CardTitle = ({ record }) => {
-    return <span>Card {record ? `"${record.title}"` : ''}</span>;
+const ArticleTitle = ({ record }) => {
+    return <span>Article {record ? `"${record.title}"` : ''}</span>;
 };
 
-export const CardEdit = (props) => (
-    <Edit title={<CardTitle />} {...props}>
+export const ArticleEdit = (props) => (
+    <Edit title={<ArticleTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
             <TextInput source="title" />
             <TextInput source="summary" />
             <TextInput source="tagNames" />
-            <LongTextInput source="content" />
+            <LongTextInput source="markdown" />
+            <MarkdownInput source="markdown" />
         </SimpleForm>
     </Edit>
 );
 
-export const CardCreate = (props) => (
+export const ArticleCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="slug" />
             <TextInput source="title" />
             <TextInput source="summary" />
             <TextInput source="tagNames" />
-            <LongTextInput source="content" />
+            <LongTextInput source="markdown" />
+            <MarkdownInput source="markdown" />
         </SimpleForm>
     </Create>
 );

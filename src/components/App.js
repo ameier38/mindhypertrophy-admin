@@ -1,9 +1,9 @@
 import React from 'react';
 import { Admin, Resource } from 'admin-on-rest'
-import authClient from './authClient'
-import { CardList, CardEdit, CardCreate } from './cards';
-import { TagList, TagEdit, TagCreate } from './tags';
-import restClient from './restClient'
+import authClient from '../authClient'
+import { ArticleList, ArticleEdit, ArticleCreate } from './Article';
+import { TagList, TagEdit, TagCreate } from './Tag';
+import restClient from '../restClient'
 
 const adminConfig = {
     title: "Mind Hypertrophy Admin",
@@ -13,7 +13,7 @@ const adminConfig = {
 
 const App = () => (
     <Admin {...adminConfig} >
-        <Resource name="cards" list={CardList} edit={CardEdit} create={CardCreate} />
+        <Resource name="articles" list={ArticleList} edit={ArticleEdit} create={ArticleCreate} />
         <Resource name="tags" list={TagList} edit={TagEdit} create={TagCreate} />
     </Admin>
 );

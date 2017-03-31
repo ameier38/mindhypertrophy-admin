@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "admin-on-rest": "^0.8.4",
+    "highlight.js": "^9.10.0",
+    "markdown-it": "^8.3.1",
+    "markdown-it-katex": "^2.0.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
