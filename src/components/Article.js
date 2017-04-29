@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react'
 import { 
     List, Edit, Create, Datagrid, TextField, EditButton, 
-    DisabledInput, LongTextInput, SimpleForm, 
-    TextInput
 } from 'admin-on-rest/lib/mui'
-import MarkdownInput from './MarkdownInput'
 import DeleteButton from './DeleteButton'
 import Chip from 'material-ui/Chip'
 import get from 'lodash.get'
+import ArticleForm from './ArticleForm'
 
 const MultipleTagField = ({ source, record = {} }) => {
     const tags = get(record, source)
@@ -42,28 +40,17 @@ const ArticleTitle = ({ record }) => {
     return <span>Article {record ? `"${record.title}"` : ''}</span>;
 };
 
-export const ArticleEdit = (props) => (
-    <Edit title={<ArticleTitle />} {...props}>
-        <SimpleForm>
-            <DisabledInput source="id" />
-            <TextInput source="title" />
-            <TextInput source="summary" />
-            <TextInput source="tagNames" />
-            <LongTextInput source="markdown" />
-            <MarkdownInput source="markdown" />
-        </SimpleForm>
-    </Edit>
-);
+
+export const ArticleEdit = (props) => {
+    return (
+        <Edit title={<ArticleTitle />} {...props}>
+            <ArticleForm />
+        </Edit>
+    )
+}
 
 export const ArticleCreate = (props) => (
     <Create {...props}>
-        <SimpleForm>
-            <TextInput source="slug" />
-            <TextInput source="title" />
-            <TextInput source="summary" />
-            <TextInput source="tagNames" />
-            <LongTextInput source="markdown" />
-            <MarkdownInput source="markdown" />
-        </SimpleForm>
+        <ArticleForm />
     </Create>
 );

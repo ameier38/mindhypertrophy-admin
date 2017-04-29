@@ -1,4 +1,4 @@
-import { AUTH_LOGIN } from 'admin-on-rest';
+import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_CHECK } from 'admin-on-rest';
 import { API_URL } from './config'
 
 export default (type, params) => {
@@ -19,6 +19,13 @@ export default (type, params) => {
             .then(({ token }) => {
                 localStorage.setItem('token', token)
             });
+    }
+    if (type === AUTH_LOGOUT) {
+        localStorage.removeItem('token');
+        return Promise.resolve();
+    }
+    if (type === AUTH_CHECK) {
+        return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
     }
     return Promise.resolve();
 }
