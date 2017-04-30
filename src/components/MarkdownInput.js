@@ -19,7 +19,8 @@ class MarkdownInput extends Component {
         const inputProps = {...input, onChange}
         return (
             <TextField
-                multiLine={true}
+                multiLine
+                fullWidth
                 hintText={label}
                 floatingLabelText={label}
                 errorText={touched && error}
