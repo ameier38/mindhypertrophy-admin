@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { 
-    DisabledInput, SimpleForm, TextInput
+    DisabledInput, SimpleForm, TextInput, LongTextInput
 } from 'admin-on-rest/lib/mui'
 import MarkdownInput from './MarkdownInput'
 import MarkdownDisplay from './MarkdownDisplay'
@@ -18,7 +18,8 @@ class ArticleForm extends Component {
             <SimpleForm {...this.props}>
                 <DisabledInput source="id" />
                 <TextInput source="title" />
-                <TextInput source="summary" />
+                <TextInput source="slug" />
+                <LongTextInput source="summary" />
                 <TextInput source="tagNames" />
                 <MarkdownInput source="markdown"/>
                 <MarkdownDisplay source="markdown" />
