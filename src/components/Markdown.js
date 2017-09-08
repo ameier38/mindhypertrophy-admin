@@ -28,6 +28,7 @@ class Markdown extends Component{
   renderMarkdown(source) {
     if (!this.markdown) {
       this.markdown = new MarkdownIt({
+        html: true,
         highlight: (str, lang) => {
           if (lang && hljs.getLanguage(lang)) {
             try {
